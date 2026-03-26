@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://6ps5oyxrjtg8"]
+
+[ext_resource type="PackedScene" uid="uid://cfm8hlybwalyg" path="res://Player_Character.tscn" id="1_a202f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
+albedo_color = Color(0.28627452, 0.7882353, 0.023529412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a202f"]
+lightmap_size_hint = Vector2i(604, 326)
+material = SubResource("StandardMaterial3D_a202f")
+size = Vector3(60, 2, 60)
+
+[node name="Node3D" type="Node3D" unique_id=1073884726]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=234814617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=891392518]
+shape = SubResource("BoxShape3D_4xowi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1753734229]
+mesh = SubResource("BoxMesh_a202f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1733206130]
+transform = Transform3D(0.9659258, 0.12940937, -0.22414365, 0.24999984, -0.69065017, 0.6786032, -0.066987164, -0.7115162, -0.69946915, 0, 10, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1551087638 instance=ExtResource("1_a202f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1138589, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="." unique_id=1018465007]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.70710677, 0.7071067, 0, -0.7071067, 0.70710677, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1987257024]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 9.536743e-07, 25.000004)
+projection = 1
+size = 19.0
+far = 154.33

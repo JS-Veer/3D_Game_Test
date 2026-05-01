@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bagj03er8mrpx"]
+
+[ext_resource type="Script" uid="uid://bkfx1f2g0ysfp" path="res://Logic/mob.gd" id="1_584jx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8022j"]
+albedo_color = Color(0.20784314, 0.039215688, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_584jx"]
+material = SubResource("StandardMaterial3D_8022j")
+radius = 0.75
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8022j"]
+height = 1.0
+radius = 0.75
+
+[node name="Mob" type="CharacterBody3D" unique_id=667951070]
+script = ExtResource("1_584jx")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1603327916]
+
+[node name="Character_Body" type="MeshInstance3D" parent="Pivot" unique_id=10255270]
+mesh = SubResource("SphereMesh_584jx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=536176625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03879845, 0)
+shape = SubResource("CylinderShape3D_8022j")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1708455029]
+aabb = AABB(-0.773968, -0.57533133, -0.85366637, 1.547936, 1.1506627, 1.7073327)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

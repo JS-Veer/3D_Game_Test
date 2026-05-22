@@ -1,8 +1,13 @@
 extends CharacterBody3D
+signal squashed
 
 @export var min_speed : int = 10
 
 @export var max_speed : int = 18
+
+func squash():
+	squashed.emit()
+	queue_free()
 
 func initialize(start_position : Vector3, player_position : Vector3) -> void:
 	look_at_from_position(start_position, player_position, Vector3.UP)

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal hit
+
 # Player movement speed in meters per second
 @export var speed : float = 14
 # Player downward acceleration in air. In meters per second^2	
@@ -73,7 +75,9 @@ func _physics_process(delta:float) -> void:
 	move_and_slide()
 	
 	
-	
-	
-	
-	
+func die():
+	hit.emit()
+	queue_free()
+
+func _on_mob_detector_body_entered(body: Node3D) -> void:
+	die()
